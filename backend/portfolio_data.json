@@ -1,0 +1,109 @@
+{
+  "personal_info": {
+    "name": "Anojaa Sukumar",
+    "role": "AI Specialist & IT Student",
+    "about": "IT student specializing in Artificial Intelligence, passionate about building full-stack web applications integrated with intelligent agents.",
+    "profile_photo": "http://127.0.0.1:8000/uploads/profile_IMG_6082.PNG"
+  },
+  "skills": [
+    "Python",
+    "C",
+    "JavaScript",
+    "FastAPI",
+    "Streamlit",
+    "React",
+    "MongoDB",
+    "Git",
+    "Machine Learning"
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "FareCast-AI",
+      "type": "Machine Learning Web Application",
+      "description": "Flight fare prediction web app providing price estimates and buy-or-wait recommendations using compressed ML models.",
+      "tech_stack": [
+        "Python",
+        "Streamlit",
+        "Scikit-Learn",
+        "Joblib",
+        "Gzip"
+      ],
+      "github_link": "https://github.com/AnojaaSukumar/FareCast-AI"
+    },
+    {
+      "id": 2,
+      "title": "ai-portfolio-agent",
+      "type": "Full-Stack AI Web Application",
+      "description": "An interactive personal portfolio application featuring a custom AI recruiter chatbot powered by FastAPI and Google Gemini 2.0 Flash. The agent dynamically parses portfolio JSON data to answer recruiter queries about projects, skills, and academic achievements in real time.",
+      "tech_stack": [
+        "React (Vite)",
+        "Python",
+        "FastAPI",
+        "Google Gemini 2.0 Flash",
+        "Axios",
+        "CSS3"
+      ],
+      "github_link": "https://github.com/AnojaaSukumar/ai-portfolio"
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "title": "AI/ML Engineer - Stage 1",
+      "issuer": "SLIIT",
+      "issue_date": "2026-07-13",
+      "file_url": "http://127.0.0.1:8000/uploads/Anojaa_Sukumar_-_2026-07-13.pdf"
+    },
+    {
+      "id": 2,
+      "title": "AI/ML Engineer - Stage 2",
+      "issuer": "SLIIT",
+      "issue_date": "2026-07-13",
+      "file_url": "http://127.0.0.1:8000/uploads/Anojaa_Sukumar_-_2026-07-13_(1).pdf"
+    }
+  ],
+  "academic_projects": [
+    {
+      "id": 1,
+      "title": "Hotel reservation System",
+      "type": "OOP/Y1S2",
+      "description": "A backend Java enterprise application built with Maven, focusing on object-oriented system architecture to manage room bookings, customer reservations, and automated billing logic.",
+      "tech_stack": [
+        "Java",
+        "Maven",
+        "OOP"
+      ],
+      "github_link": "https://github.com/AnojaaSukumar/Hotel-Reservation-System"
+    },
+    {
+      "id": 2,
+      "title": "Visa Recommendation System",
+      "type": "AI/Y2S1",
+      "description": "VIRA (Visa Recommendation Assistant) is a Python-powered conversational AI chatbot designed to interactively assess applicant profiles, evaluate eligibility, and recommend suitable visa pathways.",
+      "tech_stack": [
+        "Python",
+        "NLP",
+        "DevContainers"
+      ],
+      "github_link": "https://github.com/AnojaaSukumar/AI-Visa-Recommendation-System"
+    },
+    {
+      "id": 3,
+      "title": "SDFitness",
+      "type": "AI/ML project / Y2S2",
+      "description": "A 4-tier microservices gym management platform powered by FitGenius AI\u2014an intelligent system utilizing custom ML models and Google Gemini 2.0 Flash to generate personalized, budget-aware diet plans mapped to local supermarket pricing.",
+      "tech_stack": [
+        "TypeScript",
+        "React (Vite)",
+        "Python",
+        "FastAPI",
+        "Node.js",
+        "Express",
+        "Docker Compose",
+        "Google Gemini 2.0 Flash"
+      ],
+      "github_link": "https://github.com/AnojaaSukumar/SDFitness"
+    }
+  ]
+}
