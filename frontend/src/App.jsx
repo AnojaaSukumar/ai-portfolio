@@ -373,7 +373,15 @@ const handleSendMessage = async (e) => {
         <div style={styles.heroPhotoWrapper}>
           <div style={styles.photoContainer}>
             {portfolio?.personal_info?.profile_photo ? (
-              <img src={portfolio.personal_info.profile_photo} alt="Anojaa Sukumar" style={styles.profileImage} />
+            <img 
+  src={
+    portfolio.personal_info.profile_photo?.startsWith('http') 
+      ? portfolio.personal_info.profile_photo 
+      : `${API_BASE_URL}${portfolio.personal_info.profile_photo}`
+  } 
+  alt="Anojaa Sukumar" 
+  style={styles.profileImage} 
+/>
             ) : (
               <div style={styles.placeholderAvatar}><span style={{ fontSize: '4rem' }}>👩‍💻</span></div>
             )}
@@ -613,17 +621,30 @@ const handleSendMessage = async (e) => {
                 </div>
 
                 <div style={styles.certMediaBox}>
-                  {isPdf(cert.file_url) ? (
-                    <iframe src={cert.file_url} title={cert.title} style={{ width: '100%', height: '220px', border: 'none' }} />
-                  ) : (
-                    <img src={cert.file_url} alt={cert.title} style={{ maxWidth: '100%', maxHeight: '250px', objectFit: 'contain', cursor: 'pointer', display: 'block', margin: '0 auto' }} onClick={() => setActivePreview(cert.file_url)} />
-                  )}
-                </div>
+           {isPdf(cert.file_url) ? (
+  <iframe 
+    src={cert.file_url?.startsWith('http') ? cert.file_url : `${API_BASE_URL}${cert.file_url}`} 
+    title={cert.title} 
+    style={{ width: '100%', height: '220px', border: 'none' }} 
+  />
+) : (
+  <img 
+    src={cert.file_url?.startsWith('http') ? cert.file_url : `${API_BASE_URL}${cert.file_url}`} 
+    alt={cert.title} 
+    style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '8px' }} 
+  />
+)}
+</div>
 
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '0.75rem' }}>
-                  <a href={cert.file_url} target="_blank" rel="noopener noreferrer" style={styles.githubLink}>
-                    <ExternalLink size={14} /> View File
-                  </a>
+<div style={{ display: 'flex', gap: '1rem', marginTop: '0.75rem' }}>
+  <a 
+    href={cert.file_url?.startsWith('http') ? cert.file_url : `${API_BASE_URL}${cert.file_url}`} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    style={styles.githubLink}
+  >
+    <ExternalLink size={14} /> View File
+  </a>
                   {!isPdf(cert.file_url) && (
                     <button onClick={() => setActivePreview(cert.file_url)} style={styles.inlineBtn}>
                       <Eye size={14} /> Enlarge Image
@@ -700,7 +721,15 @@ const handleSendMessage = async (e) => {
       {activePreview && (
         <div style={styles.modalOverlay} onClick={() => setActivePreview(null)}>
           <div style={{ position: 'relative' }} onClick={(e) => e.stopPropagation()}>
-            <img src={activePreview} alt="Full Preview" style={{ maxWidth: '90vw', maxHeight: '85vh', borderRadius: '0.5rem' }} />
+          <img 
+  src={
+    activePreview?.startsWith('http') 
+      ? activePreview 
+      : `${API_BASE_URL}${activePreview}`
+  } 
+  alt="Full Preview" 
+  style={{ maxWidth: '90vw', maxHeight: '85vh', borderRadius: '0.5rem' }} 
+/>
             <button style={styles.modalCloseBtn} onClick={() => setActivePreview(null)}>Close ✕</button>
           </div>
         </div>
