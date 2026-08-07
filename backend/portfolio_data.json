@@ -47,22 +47,22 @@
       "github_link": "https://github.com/AnojaaSukumar/ai-portfolio"
     }
   ],
-  "certificates": [
-    {
-      "id": 1,
-      "title": "AI/ML Engineer - Stage 1",
-      "issuer": "SLIIT",
-      "issue_date": "2026-07-13",
-      "file_url": "http://127.0.0.1:8000/uploads/Anojaa_Sukumar_-_2026-07-13.pdf"
-    },
-    {
-      "id": 2,
-      "title": "AI/ML Engineer - Stage 2",
-      "issuer": "SLIIT",
-      "issue_date": "2026-07-13",
-      "file_url": "http://127.0.0.1:8000/uploads/Anojaa_Sukumar_-_2026-07-13_(1).pdf"
-    }
-  ],
+ "certificates": [
+  {
+    "id": 1,
+    "title": "AI/ML Engineer - Stage 1",
+    "issuer": "SLIIT",
+    "issue_date": "2026-07-13",
+    "file_url": "/uploads/Anojaa_Sukumar_-_2026-07-13.pdf"
+  },
+  {
+    "id": 2,
+    "title": "AI/ML Engineer - Stage 2",
+    "issuer": "SLIIT",
+    "issue_date": "2026-07-13",
+    "file_url": "/uploads/Anojaa_Sukumar_-_2026-07-13_(1).pdf"
+  }
+],
   "academic_projects": [
     {
       "id": 1,
