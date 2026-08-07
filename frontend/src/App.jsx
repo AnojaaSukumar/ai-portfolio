@@ -849,10 +849,33 @@ submitBtn: {
   marginTop: 'auto'                // Pin button to bottom of container
 },
   modalOverlay: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(15, 23, 42, 0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 },
-  modalCard: { backgroundColor: '#1E293B', border: '1px solid #334155', padding: '1.75rem', borderRadius: '0.75rem', width: '380px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.5)' },
+  modalCard: {
+  backgroundColor: '#1E293B',
+  border: '1px solid #334155',
+  padding: '1.5rem',
+  borderRadius: '0.75rem',
+  width: '90%',               // Scalable width for mobile
+  maxWidth: '380px',          // Cap at 380px for desktop
+  boxShadow: '0 20px 25px -5px rgba(0,0,0,0.5)'
+},
   modalCloseBtn: { marginTop: '1rem', backgroundColor: '#EF4444', color: '#FFF', border: 'none', padding: '0.5rem 1rem', borderRadius: '0.25rem', cursor: 'pointer', fontWeight: '600' },
   chatFab: { position: 'fixed', bottom: '2rem', right: '2rem', backgroundColor: '#0F172A', border: '2px solid #0284C7', borderRadius: '50%', width: '60px', height: '60px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 15px -3px rgba(2,132,199,0.4)' },
-  chatWindow: { position: 'fixed', bottom: '6.5rem', right: '2rem', width: '350px', height: '430px', backgroundColor: '#FFFFFF', borderRadius: '0.75rem', border: '1px solid #E2E8F0', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', overflow: 'hidden', zIndex: 999 },
+ chatWindow: {
+  position: 'fixed',
+  bottom: '1rem',
+  right: '1rem',
+  width: 'calc(100vw - 2rem)', // Fits nicely on small screens
+  maxWidth: '350px',           // Won't get too big on desktop
+  height: '430px',
+  maxHeight: '80vh',           // Prevents overflowing top of screen on short phones
+  backgroundColor: '#FFFFFF',
+  borderRadius: '0.75rem',
+  border: '1px solid #E2E8F0',
+  boxShadow: '0 20px 25px -5px rgba(0,0,0,0.15)',
+  display: 'flex',
+  flexDirection: 'column',
+  zIndex: 1000
+},
   chatHeader: { backgroundColor: '#0F172A', color: '#FFF', padding: '0.85rem', fontWeight: '700', display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
   chatBody: { flex: 1, padding: '0.75rem', overflowY: 'auto', overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: '0.5rem', backgroundColor: '#F8FAFC' },
   botBubble: { backgroundColor: '#FFFFFF', color: '#0F172A', border: '1px solid #E2E8F0', padding: '0.6rem 0.8rem', borderRadius: '0.5rem', alignSelf: 'flex-start', maxWidth: '88%', fontSize: '0.875rem', whiteSpace: 'pre-wrap', lineHeight: '1.4', wordBreak: 'break-word' },
