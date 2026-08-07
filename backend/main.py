@@ -305,7 +305,7 @@ def chat_with_agent(req: ChatRequest):
         for attempt in range(3):  # Try up to 3 times
             try:
                 response = ai_client.models.generate_content(
-                    model="gemini-2.0-flash-lite",
+                   model="gemini-1.5-flash",
                     contents=user_query,
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
