@@ -3,7 +3,7 @@
     "name": "Anojaa Sukumar",
     "role": "AI Specialist & IT Student",
     "about": "IT student specializing in Artificial Intelligence, passionate about building full-stack web applications integrated with intelligent agents.",
-    "profile_photo": "http://127.0.0.1:8000/uploads/profile_IMG_6082.PNG"
+    "profile_photo": "/uploads/profile_IMG_6082.PNG"
   },
   "skills": [
     "Python",
