@@ -369,7 +369,7 @@ const handleSendMessage = async (e) => {
         </div>
 
         <div className="responsive-hero-photo" style={styles.heroPhotoWrapper}>
-          <div style={styles.photoContainer}>
+          <div style={styles.photoWrapper}>
             {portfolio?.personal_info?.profile_photo ? (
             <img 
   src={
@@ -779,10 +779,19 @@ const styles = {
   primaryBtn: { backgroundColor: '#0284C7', color: '#FFF', padding: '0.75rem 1.5rem', borderRadius: '9999px', textDecoration: 'none', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' },
   secondaryBtn: { backgroundColor: '#0F172A', color: '#FFFFFF', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '9999px', cursor: 'pointer', fontWeight: '600' },
   
-  heroPhotoWrapper: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
-  photoWrapper: {
+heroPhotoWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexShrink: 0
+  },
+photoWrapper: {
   width: '220px',
   height: '220px',
+  minWidth: '220px',
+  minHeight: '220px',
+  maxWidth: '220px',
+  maxHeight: '220px',
   borderRadius: '50%',
   border: '4px solid #0284C7',
   overflow: 'hidden',
@@ -792,14 +801,14 @@ const styles = {
   alignItems: 'center',
   backgroundColor: '#E0F2FE',
   boxShadow: '0 10px 25px -5px rgba(2,132,199,0.2)',
-  margin: '0 auto',          // Centers it on mobile screens
-  flexShrink: 0              // Prevents flexbox from squeezing or expanding it
+  flexShrink: 0
 },
-profileImage: {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover'
-},
+  profileImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '50%'
+  },
   placeholderAvatar: { display: 'flex', alignItems: 'center', justifyContent: 'center' },
   floatingBadge: { position: 'absolute', bottom: '10px', backgroundColor: '#0284C7', color: '#FFF', padding: '0.3rem 0.8rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: '700' },
   tickerBanner: { backgroundColor: '#0F172A', color: '#38BDF8', padding: '0.8rem 0', display: 'flex', justifyContent: 'space-around', fontWeight: '700', fontSize: '0.95rem' },
