@@ -6,7 +6,7 @@ import {
   ArrowRight, Camera, ShieldCheck, GraduationCap 
 } from 'lucide-react';
 // Base URL configuration for local dev and live production
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000').replace(/\/$/, '');
 export default function App() {
   const [portfolio, setPortfolio] = useState(null);
   const [loading, setLoading] = useState(true);

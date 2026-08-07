@@ -263,7 +263,7 @@ async def update_certificate(
                 file_path = UPLOAD_DIR / safe_filename
                 with open(file_path, "wb") as f:
                     f.write(await file.read())
-                c["file_url"] = f"http://127.0.0.1:8000/uploads/{safe_filename}"
+                c["file_url"] = f"/uploads/{safe_filename}"  # ✅ CORRECT
             save_data(data)
             return {"message": "Certificate updated successfully!"}
     raise HTTPException(status_code=404, detail="Certificate not found")
