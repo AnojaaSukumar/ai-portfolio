@@ -10,11 +10,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-# Official Google GenAI SDK
-from google import genai
-from google.genai import types
+# Official Groq SDK
+from groq import Groq
 
 load_dotenv()
+
+# Initialize Groq Client
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+groq_client = Groq(api_key=GROQ_API_KEY) if GROQ_API_KEY else None
 
 app = FastAPI(title="Living AI Portfolio API")
 
@@ -279,19 +282,18 @@ def delete_certificate(cert_id: int):
     save_data(data)
     return {"message": f"Certificate {cert_id} deleted successfully!"}
 
-
 class ChatRequest(BaseModel):
     message: str
 
 
 @app.post("/api/chat")
-def chat_with_agent(req: ChatRequest):
+async def chat_with_agent(req: ChatRequest):
     data = load_data()
     user_query = req.message.strip()
 
     system_instruction = f"""
     You are an intelligent AI Recruiter Assistant representing Anojaa Sukumar on her portfolio website.
-    
+
     Here is Anojaa's background data:
     {json.dumps(data, indent=2)}
 
@@ -301,27 +303,21 @@ def chat_with_agent(req: ChatRequest):
     3. Keep answers polite, concise, and professional.
     """
 
-    if ai_client:
-        for attempt in range(3):
-            try:
-                response = ai_client.models.generate_content(
-                   model="gemini-2.0-flash",  # <--- UPDATED MODEL NAME
-                    contents=user_query,
-                    config=types.GenerateContentConfig(
-                        system_instruction=system_instruction,
-                        temperature=0.3,
-                    ),
-                )
-                if response and response.text:
-                    return {"reply": response.text}
-            except Exception as err:
-                print(f"⚠️ Attempt {attempt + 1} Error:", repr(err))
-                if "429" in str(err):
-                    time.sleep(4)
-                else:
-                    return {"reply": f"Gemini Error: {str(err)}"}
+    if groq_client:
+        try:
+            response = groq_client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[
+                    {"role": "system", "content": system_instruction},
+                    {"role": "user", "content": user_query},
+                ],
+                temperature=0.3,
+            )
+            return {"reply": response.choices[0].message.content}
+        except Exception as e:
+            print(f"⚠️ Groq Error: {repr(e)}")
 
-    # Static Fallback if all attempts fail
+    # Fallback if Groq API key is missing or encounters an issue
     return {
         "reply": f"Anojaa is an {data.get('personal_info', {}).get('role', 'AI Specialist & IT Student')}. Feel free to ask about her projects or certificates!"
     }
