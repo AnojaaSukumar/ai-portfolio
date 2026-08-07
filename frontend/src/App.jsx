@@ -325,7 +325,6 @@ export default function App() {
         * { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; overflow-x: hidden; }
         
-        /* ===== NAV ===== */
         .responsive-nav {
           flex-wrap: wrap;
           gap: 1rem;
@@ -336,7 +335,6 @@ export default function App() {
           flex-wrap: wrap;
         }
 
-        /* ===== HERO ===== */
         .responsive-hero {
           display: flex;
           justify-content: space-between;
@@ -349,14 +347,12 @@ export default function App() {
           flex-wrap: wrap;
         }
 
-        /* ===== ABOUT ===== */
         .responsive-dark-section {
           display: flex;
           align-items: center;
           gap: 4rem;
         }
 
-        /* ===== MEDIA QUERIES ===== */
         @media (max-width: 1024px) {
           .responsive-nav {
             padding: 1rem 2rem !important;
@@ -384,7 +380,7 @@ export default function App() {
             align-items: flex-start !important;
           }
           .responsive-nav .nav-links {
-            display: none; /* hide links on very small screens, keep logo + buttons */
+            display: none;
           }
           .responsive-hero {
             padding: 2.5rem 1.25rem !important;
@@ -831,6 +827,61 @@ export default function App() {
               <input type="text" placeholder="Tech Stack" value={editingAcademicProject.tech_stack} onChange={(e) => setEditingAcademicProject({ ...editingAcademicProject, tech_stack: e.target.value })} required style={styles.inputDark} />
               <input type="url" placeholder="GitHub Link" value={editingAcademicProject.github_link} onChange={(e) => setEditingAcademicProject({ ...editingAcademicProject, github_link: e.target.value })} required style={styles.inputDark} />
               <button type="submit" style={styles.submitBtn}>Update Project</button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* ✏️ EDIT CERTIFICATE MODAL */}
+      {editingCert && (
+        <div style={styles.modalOverlay}>
+          <div style={styles.modalCard}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h3 style={{ margin: 0, color: '#F8FAFC' }}>Edit Certificate</h3>
+              <button 
+                onClick={() => {
+                  setEditingCert(null);
+                  setEditCertFile(null);
+                }} 
+                style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <form onSubmit={handleUpdateCertificate} style={styles.form}>
+              <input 
+                type="text" 
+                placeholder="Title" 
+                value={editingCert.title} 
+                onChange={(e) => setEditingCert({ ...editingCert, title: e.target.value })} 
+                required 
+                style={styles.inputDark} 
+              />
+              <input 
+                type="text" 
+                placeholder="Issuer" 
+                value={editingCert.issuer} 
+                onChange={(e) => setEditingCert({ ...editingCert, issuer: e.target.value })} 
+                required 
+                style={styles.inputDark} 
+              />
+              <input 
+                type="date" 
+                value={editingCert.issue_date} 
+                onChange={(e) => setEditingCert({ ...editingCert, issue_date: e.target.value })} 
+                required 
+                style={styles.inputDark} 
+              />
+              <div style={{ color: '#94A3B8', fontSize: '0.8rem' }}>
+                Leave empty to keep current file
+              </div>
+              <input 
+                type="file" 
+                accept=".pdf,.png,.jpg,.jpeg" 
+                onChange={(e) => setEditCertFile(e.target.files[0])} 
+                style={styles.inputDark} 
+              />
+              <button type="submit" style={styles.submitBtn}>Update Certificate</button>
             </form>
           </div>
         </div>
