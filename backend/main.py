@@ -302,10 +302,10 @@ def chat_with_agent(req: ChatRequest):
     """
 
     if ai_client:
-        for attempt in range(3):  # Try up to 3 times
+        for attempt in range(3):
             try:
                 response = ai_client.models.generate_content(
-                   model="gemini-1.5-flash",
+                    model="gemini-2.5-flash",  # <--- UPDATED MODEL NAME
                     contents=user_query,
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
@@ -314,13 +314,12 @@ def chat_with_agent(req: ChatRequest):
                 )
                 if response and response.text:
                     return {"reply": response.text}
-            except Exception as e:
-             print(f"⚠️ Attempt {attempt + 1} Rate Limited/Error:", repr(e))
-            if "429" in str(e):
-                time.sleep(4)
-            else:
-                return {"reply": f"Gemini Error: {str(e)}"}
-            
+            except Exception as err:
+                print(f"⚠️ Attempt {attempt + 1} Error:", repr(err))
+                if "429" in str(err):
+                    time.sleep(4)
+                else:
+                    return {"reply": f"Gemini Error: {str(err)}"}
 
     # Static Fallback if all attempts fail
     return {
