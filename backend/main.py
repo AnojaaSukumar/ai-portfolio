@@ -28,10 +28,10 @@ app.add_middleware(
 )
 
 DATA_FILE = Path("portfolio_data.json")
-UPLOAD_DIR = Path("uploads")
+UPLOAD_DIR = Path("/app/uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
-app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
 
 def load_data():
@@ -119,7 +119,7 @@ async def upload_profile_photo(file: UploadFile = File(...)):
     file_path = UPLOAD_DIR / safe_filename
     with open(file_path, "wb") as f:
         f.write(await file.read())
-    photo_url = f"http://127.0.0.1:8000/uploads/{safe_filename}"
+    photo_url = f"/uploads/{safe_filename}"
     data["personal_info"]["profile_photo"] = photo_url
     save_data(data)
     return {"message": "Profile photo updated successfully!", "photo_url": photo_url}
@@ -235,7 +235,7 @@ async def upload_certificate(
         "title": title,
         "issuer": issuer,
         "issue_date": issue_date,
-        "file_url": f"http://127.0.0.1:8000/uploads/{safe_filename}"
+        "file_url": f"/uploads/{safe_filename}"
     }
     if "certificates" not in data:
         data["certificates"] = []
