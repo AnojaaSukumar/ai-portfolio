@@ -315,11 +315,12 @@ def chat_with_agent(req: ChatRequest):
                 if response and response.text:
                     return {"reply": response.text}
             except Exception as e:
-                print(f"⚠️ Attempt {attempt + 1} Rate Limited/Error:", repr(e))
-                if "429" in str(e):
-                    time.sleep(4)  # Wait 4 seconds for the quota window to clear
-                else:
-                    break
+             print(f"⚠️ Attempt {attempt + 1} Rate Limited/Error:", repr(e))
+            if "429" in str(e):
+                time.sleep(4)
+            else:
+                return {"reply": f"Gemini Error: {str(e)}"}
+            
 
     # Static Fallback if all attempts fail
     return {
