@@ -305,7 +305,7 @@ def chat_with_agent(req: ChatRequest):
         for attempt in range(3):
             try:
                 response = ai_client.models.generate_content(
-                    model="gemini-2.5-flash",  # <--- UPDATED MODEL NAME
+                   model="gemini-2.0-flash",  # <--- UPDATED MODEL NAME
                     contents=user_query,
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
